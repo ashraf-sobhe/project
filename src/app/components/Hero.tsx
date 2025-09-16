@@ -3,7 +3,7 @@ import React from 'react'
 const Hero = () => {
   return (
     <div>
-      hero main section
+      <h2>hero main section </h2>
     </div>
   )
 }
