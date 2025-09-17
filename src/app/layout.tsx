@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "./components/header/Header"; // استدعاء الهيدر
+import { CartProvider } from "./context/CartContext"; // استدعاء الـ Context
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,11 +26,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <Header />  {/* الهيدر فوق كل الصفحات */}
-        <main>{children}</main>  {/* محتوى كل صفحة */}
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <CartProvider>
+          <Header />  {/* الهيدر فوق كل الصفحات */}
+          <main>{children}</main>  {/* محتوى كل صفحة */}
+        </CartProvider>
       </body>
     </html>
   );

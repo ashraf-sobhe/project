@@ -3,30 +3,40 @@
 import { useState } from "react";
 import { FaShoppingCart, FaBars, FaTimes } from "react-icons/fa";
 import Logo from "./Logo";
+import CartPopup from "../cart/CartPopup"; // استدعاء مكون السلة
 
 const NavbarLinks = [
   { name: "اتصل بنا", href: "/contact" },
-   { name: "خدمة العملاء", href: "/services" },
+  { name: "خدمة العملاء", href: "/services" },
   { name: "من نحن", href: "/about" },
   { name: "المنيو", href: "/menu" },
 ];
 
 const Header = () => {
-  const [cartCount, setCartCount] = useState(0);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [cartCount, setCartCount] = useState(0); // عدد المنتجات في الهيدر
+  const [menuOpen, setMenuOpen] = useState(false); // قائمة الموبايل
+  const [cartOpen, setCartOpen] = useState(false); // فتح وغلق السلة
 
   return (
-    <header className="w-full bg-[#f5f5dc] shadow-md">
+    <header className="w-full bg-[#f5f5dc] shadow-md relative">
       <div className="container mx-auto px-4 py-1.5 flex items-center justify-between">
 
-        {/* اليسار: أيقونة السلة */}
-        <div className="relative cursor-pointer">
-          <FaShoppingCart size={26} />
-          {cartCount > 0 && (
-            <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold px-2 py-0.5 rounded-full">
-              {cartCount}
-            </span>
-          )}
+        {/* اليسار: أيقونة السلة + Popup */}
+        <div className="relative">
+          <div
+            className="cursor-pointer"
+            onClick={() => setCartOpen(!cartOpen)}
+          >
+            <FaShoppingCart size={26} />
+            {cartCount > 0 && (
+              <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold px-2 py-0.5 rounded-full">
+                {cartCount}
+              </span>
+            )}
+          </div>
+
+          {/* Popup السلة */}
+          {cartOpen && <CartPopup />}
         </div>
 
         {/* الوسط: روابط التنقل (Desktop) */}
@@ -52,20 +62,20 @@ const Header = () => {
       </div>
 
       {/* قائمة الموبايل المنسدلة */}
-{menuOpen && (
-  <div className="md:hidden bg-[#f5f5dc] px-4 pb-4 flex flex-col items-start">
-    {NavbarLinks.map((link) => (
-      <a
-        key={link.name}
-        href={link.href}
-        className="block py-2 font-medium text-gray-800 hover:text-gray-600 text-left"
-        onClick={() => setMenuOpen(false)}
-      >
-        {link.name}
-      </a>
-    ))}
-  </div>
-)}
+      {menuOpen && (
+        <div className="md:hidden bg-[#f5f5dc] px-4 pb-4 flex flex-col items-start">
+          {NavbarLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              className="block py-2 font-medium text-gray-800 hover:text-gray-600 text-left"
+              onClick={() => setMenuOpen(false)}
+            >
+              {link.name}
+            </a>
+          ))}
+        </div>
+      )}
     </header>
   );
 };
