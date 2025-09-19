@@ -1,55 +1,96 @@
 "use client";
 
+import { Box, Typography, IconButton, Divider, Button, Paper } from "@mui/material";
+import { Add, Remove, Close } from "@mui/icons-material";
 import { useCart } from "../../context/CartContext";
+interface CartPopupProps {
+  onClose: () => void;
+}
 
-const CartPopup = () => {
-  const { cart, removeFromCart, clearCart } = useCart();
+export default function CartPopup({ onClose }: CartPopupProps) {
+  const { cart, incrementQuantity, decrementQuantity, removeFromCart } = useCart();
 
-  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const total = cart.reduce((sum, p) => sum + (p.price * (p.quantity || 1)), 0);
 
   return (
-    <div className="absolute top-full left-0 mt-2 w-72 bg-white shadow-lg p-4 z-50 rounded-md">
-      <h3 className="text-lg font-semibold mb-2">السلة</h3>
+    <Paper
+      sx={{
+        position: "absolute",
+        top: 60,
+        right: 20,
+        width: 350,
+        maxHeight: 500,
+        overflowY: "auto",
+        p: 2,
+        boxShadow: 6,
+        zIndex: 50,
+      }}
+    >
+      {/* رأس البوب أب */}
+      <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
+        <Typography variant="h6" fontWeight="bold">
+          السلة
+        </Typography>
+        <IconButton onClick={onClose}>
+          <Close />
+        </IconButton>
+      </Box>
 
+      <Divider sx={{ mb: 2 }} />
+
+      {/* قائمة المنتجات */}
       {cart.length === 0 ? (
-        <p className="text-gray-500">السلة فارغة</p>
+        <Typography align="center">السلة فارغة</Typography>
       ) : (
-        <div className="space-y-2 max-h-64 overflow-y-auto">
-          {cart.map((item) => (
-            <div
-              key={item.id}
-              className="flex justify-between items-center border-b pb-1"
+        cart.map((product) => (
+          <Box key={product.id} display="flex" justifyContent="space-between" alignItems="center" mb={2}>
+            <Box>
+              <Typography fontWeight="bold">{product.name}</Typography>
+              <Typography color="text.secondary">
+                {product.price} ج.م
+              </Typography>
+            </Box>
+
+            {/* عداد الكمية */}
+            <Box display="flex" alignItems="center">
+              <IconButton onClick={() => decrementQuantity(product.id)} size="small">
+                <Remove />
+              </IconButton>
+              <Typography mx={1}>{product.quantity}</Typography>
+              <IconButton onClick={() => incrementQuantity(product.id)} size="small">
+                <Add />
+              </IconButton>
+            </Box>
+
+            <Box>
+              <Typography>{(product.price * (product.quantity || 1)).toFixed(2)} ج.م</Typography>
+            </Box>
+
+            {/* زر حذف */}
+            <Button
+              color="error"
+              size="small"
+              onClick={() => removeFromCart(product.id)}
+              sx={{ ml: 1 }}
             >
-              <div>
-                <p className="font-medium">{item.name}</p>
-                <p className="text-sm text-gray-500">
-                  {item.quantity} × {item.price} جنيه
-                </p>
-              </div>
-              <button
-                className="text-red-600 hover:text-red-800 font-bold"
-                onClick={() => removeFromCart(item.id)}
-              >
-                حذف
-              </button>
-            </div>
-          ))}
-        </div>
+              حذف
+            </Button>
+          </Box>
+        ))
       )}
 
-      {cart.length > 0 && (
-        <>
-          <p className="font-semibold mt-2">الإجمالي: {total} جنيه</p>
-          <button
-            className="mt-2 w-full bg-red-600 text-white py-1 rounded hover:bg-red-700"
-            onClick={clearCart}
-          >
-            تفريغ السلة
-          </button>
-        </>
-      )}
-    </div>
+      <Divider sx={{ mt: 2, mb: 2 }} />
+
+      {/* المجموع الكلي */}
+      <Box display="flex" justifyContent="space-between" alignItems="center">
+        <Typography fontWeight="bold">الإجمالي:</Typography>
+        <Typography fontWeight="bold">{total.toFixed(2)} ج.م</Typography>
+      </Box>
+
+      {/* زر تأكيد الطلب */}
+      <Button variant="contained" color="primary" fullWidth sx={{ mt: 2 }}>
+        تأكيد الطلب
+      </Button>
+    </Paper>
   );
-};
-
-export default CartPopup;
+}
