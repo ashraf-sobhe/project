@@ -8,7 +8,7 @@ export interface Product {
   quantity?: number;
 }
 
-interface CartContextType {
+export interface CartContextType {
   cart: Product[];
   addToCart: (product: Product) => void;
   removeFromCart: (id: number) => void;
