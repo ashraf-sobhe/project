@@ -50,9 +50,20 @@ export default function ProductCard({ product }: ProductCardProps) {
       </CardContent>
 
       <CardActions sx={{ p: 1 }}>
-        <Button variant="contained" fullWidth color="primary" onClick={() => addToCart(product)}>
-          أضف للسلة
-        </Button>
+      <Button
+  variant="contained"
+  fullWidth
+  onClick={() => addToCart(product)}
+  sx={{
+    backgroundColor: "#d2b48c", // بيج غامق
+    color: "#fff",
+    "&:hover": {
+      backgroundColor: "#9c7b4c", // أغمق شوية عند الهوفر
+    },
+  }}
+>
+  أضف إلى السلة
+</Button>
       </CardActions>
     </Card>
   );
