@@ -12,6 +12,7 @@ export interface CartContextType {
   cart: Product[];
   addToCart: (product: Product) => void;
   removeFromCart: (id: number) => void;
+  decrementQuantity: (id: number) => void;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -35,8 +36,20 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     setCart((prev) => prev.filter((p) => p.id !== id));
   };
 
+  const decrementQuantity = (id: number) => {
+    setCart((prev) =>
+      prev
+        .map((p) =>
+          p.id === id
+            ? { ...p, quantity: Math.max((p.quantity || 1) - 1, 1) }
+            : p
+        )
+        .filter((p) => p.quantity! > 0)
+    );
+  };
+
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart }}>
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart, decrementQuantity }}>
       {children}
     </CartContext.Provider>
   );
