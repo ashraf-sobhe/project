@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Box, Grid, Typography, Tabs, Tab, TextField } from "@mui/material";
+import { Box, Typography, Tabs, Tab, TextField } from "@mui/material";
 import ProductCard from "./ProductCard";
 import { foods, drinks, desserts } from "../components/products/data";
 
@@ -44,6 +44,7 @@ export default function ProductTabs() {
         قائمة الطعام
       </Typography>
 
+      {/* شريط البحث والتابات */}
       <Box
         sx={{
           display: "flex",
@@ -99,14 +100,26 @@ export default function ProductTabs() {
         </Tabs>
       </Box>
 
-      {/* استخدام Grid التقليدي */}
-      <Grid container spacing={3} sx={{ direction: "rtl" }}>
+      {/* عرض المنتجات باستخدام CSS Grid */}
+      <Box
+        sx={{
+          display: "grid",
+          gridTemplateColumns: {
+            xs: "1fr",
+            sm: "repeat(2, 1fr)",
+            md: "repeat(3, 1fr)",
+            lg: "repeat(4, 1fr)",
+          },
+          gap: 3,
+          direction: "rtl",
+        }}
+      >
         {getProductsForTab().map((product) => (
-          <Grid item xs={12} sm={6} md={4} lg={3} key={product.name}>
+          <Box key={product.name}>
             <ProductCard product={product} />
-          </Grid>
+          </Box>
         ))}
-      </Grid>
+      </Box>
     </Box>
   );
 }
