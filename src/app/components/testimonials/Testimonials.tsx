@@ -1,5 +1,5 @@
 "use client";
-import { Box, Typography, Grid, Card, CardContent } from "@mui/material";
+import { Box, Typography, Card, CardContent } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
 
 const Testimonials = () => {
@@ -32,9 +32,22 @@ const Testimonials = () => {
       </Typography>
 
       {/* البوكسات */}
-      <Grid container spacing={4} justifyContent="center">
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          gap: 4,
+          flexWrap: "wrap",
+        }}
+      >
         {reviews.map((review, index) => (
-          <Grid item xs={12} md={4} key={index}>
+          <Box
+            key={index}
+            sx={{
+              flex: "1 1 300px",
+              maxWidth: "350px",
+            }}
+          >
             <Card
               sx={{
                 p: 3,
@@ -62,7 +75,7 @@ const Testimonials = () => {
                   sx={{
                     fontStyle: "italic",
                     mb: 3,
-                    minHeight: "60px", // عشان النصوص كلها تبقى متساوية
+                    minHeight: "60px",
                   }}
                 >
                   "{review.text}"
@@ -79,9 +92,9 @@ const Testimonials = () => {
                 </Typography>
               </CardContent>
             </Card>
-          </Grid>
+          </Box>
         ))}
-      </Grid>
+      </Box>
     </Box>
   );
 };
