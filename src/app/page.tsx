@@ -4,6 +4,8 @@ import { Box, Typography } from "@mui/material";
 import SearchBar from "./components/SearchBar";
 import ProductTabs from "./components/ProductTabs";
 import AboutSection from "./components/about/AboutSection";
+import Testimonials from "./components/testimonials/Testimonials";
+import Services from "./components/services/Services";
 
 export default function Home() {
   return (
@@ -17,6 +19,8 @@ export default function Home() {
         {/* التابات مع المنتجات */}
         <ProductTabs />
         <AboutSection />
+        <Testimonials />
+        <Services />
       </Box>
     </>
   );
