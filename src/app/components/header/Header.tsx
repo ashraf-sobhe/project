@@ -15,7 +15,7 @@ const NavbarLinks = [
 ];
 
 export default function Header() {
-  const { cart, removeFromCart } = useCart();
+  const { cart } = useCart();
   const [cartOpen, setCartOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -50,7 +50,7 @@ export default function Header() {
         </button>
 
         {/* Popup السلة */}
-        {cartOpen && <CartPopup products={cart} onClose={() => setCartOpen(false)} onRemove={removeFromCart} />}
+        {cartOpen && <CartPopup onClose={() => setCartOpen(false)} />}
       </div>
 
       {/* قائمة الموبايل */}

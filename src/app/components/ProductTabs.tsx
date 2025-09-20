@@ -40,12 +40,10 @@ export default function ProductTabs() {
 
   return (
     <Box sx={{ px: 2, py: 4 }}>
-      {/* عنوان قائمة الطعام */}
       <Typography variant="h3" fontWeight="bold" mb={4} align="center">
         قائمة الطعام
       </Typography>
 
-      {/* شريط البحث والتابات */}
       <Box
         sx={{
           display: "flex",
@@ -56,7 +54,6 @@ export default function ProductTabs() {
           gap: 2,
         }}
       >
-        {/* البحث */}
         <TextField
           variant="outlined"
           placeholder="ابحث عن منتج..."
@@ -75,7 +72,6 @@ export default function ProductTabs() {
           }}
         />
 
-        {/* التابات */}
         <Tabs
           value={tab}
           onChange={handleChange}
@@ -103,7 +99,7 @@ export default function ProductTabs() {
         </Tabs>
       </Box>
 
-      {/* المنتجات */}
+      {/* استخدام Grid التقليدي */}
       <Grid container spacing={3} sx={{ direction: "rtl" }}>
         {getProductsForTab().map((product) => (
           <Grid item xs={12} sm={6} md={4} lg={3} key={product.name}>

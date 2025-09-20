@@ -3,6 +3,7 @@
 import { Box, Typography, IconButton, Divider, Button, Paper } from "@mui/material";
 import { Add, Remove, Close } from "@mui/icons-material";
 import { useCart } from "../../context/CartContext";
+
 interface CartPopupProps {
   onClose: () => void;
 }
@@ -43,12 +44,16 @@ export default function CartPopup({ onClose }: CartPopupProps) {
         <Typography align="center">السلة فارغة</Typography>
       ) : (
         cart.map((product) => (
-          <Box key={product.id} display="flex" justifyContent="space-between" alignItems="center" mb={2}>
+          <Box
+            key={product.id}
+            display="flex"
+            justifyContent="space-between"
+            alignItems="center"
+            mb={2}
+          >
             <Box>
               <Typography fontWeight="bold">{product.name}</Typography>
-              <Typography color="text.secondary">
-                {product.price} ج.م
-              </Typography>
+              <Typography color="text.secondary">{product.price} ج.م</Typography>
             </Box>
 
             {/* عداد الكمية */}
