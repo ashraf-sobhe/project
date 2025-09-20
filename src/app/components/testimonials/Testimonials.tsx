@@ -19,7 +19,7 @@ const Testimonials = () => {
   ];
 
   return (
-    <Box sx={{ py: 8, backgroundColor: "#fdf6e3" }}>
+    <Box id="testimonials" sx={{ py: 8, backgroundColor: "#fdf6e3" }}>
       {/* العنوان */}
       <Typography
         variant="h4"

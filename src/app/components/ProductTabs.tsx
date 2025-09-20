@@ -39,7 +39,7 @@ export default function ProductTabs() {
   };
 
   return (
-    <Box sx={{ px: 2, py: 4 }}>
+    <Box id="products" sx={{ px: 2, py: 4 }}>
       <Typography variant="h3" fontWeight="bold" mb={4} align="center">
         قائمة الطعام
       </Typography>

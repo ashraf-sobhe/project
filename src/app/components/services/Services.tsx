@@ -5,7 +5,7 @@ import PhoneIcon from "@mui/icons-material/Phone";
 
 export default function CustomerService() {
   return (
-    <Box
+    <Box id="services"
       sx={{
         py: 10,
         px: 3,

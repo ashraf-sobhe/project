@@ -5,7 +5,7 @@ import { FaUtensils, FaHeart, FaLeaf } from "react-icons/fa";
 
 export default function AboutSection() {
   return (
-    <section className="w-full bg-gradient-to-b from-gray-50 to-white py-16 px-6 md:px-12 lg:px-20">
+    <section   id="about"  className="w-full bg-gradient-to-b from-gray-50 to-white py-16 px-6 md:px-12 lg:px-20">
   <div className="max-w-6xl mx-auto">
     {/* العنوان الرئيسي */}
     <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 text-center mb-12">

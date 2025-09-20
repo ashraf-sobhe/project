@@ -8,10 +8,12 @@ import Link from "next/link";
 import { useCart } from "../../context/CartContext";
 
 const NavbarLinks = [
-  { name: "الصفحة الرئيسية", href: "/" },
-  { name: "المنيو", href: "/products" },
-  { name: "من نحن", href: "/about" },
-  { name: "اتصل بنا", href: "/contact" },
+ 
+  { name: "اتصل بنا", href: "#contact" },
+   { name: "خدمة العملاء ", href: "#services" },
+    { name: "من نحن", href: "#about" },
+    { name: "المنيو", href: "#products" },
+
 ];
 
 export default function Header() {
