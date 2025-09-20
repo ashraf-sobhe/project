@@ -3,6 +3,7 @@ import Hero from "./components/hero/Hero";
 import { Box, Typography } from "@mui/material";
 import SearchBar from "./components/SearchBar";
 import ProductTabs from "./components/ProductTabs";
+import AboutSection from "./components/about/AboutSection";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
        
         {/* التابات مع المنتجات */}
         <ProductTabs />
+        <AboutSection />
       </Box>
     </>
   );

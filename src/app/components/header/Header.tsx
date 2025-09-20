@@ -21,7 +21,7 @@ export default function Header() {
 
   return (
     <header className="w-full bg-[#f5f5dc] shadow-md fixed top-0 left-0 z-50">
-      <div className="container mx-auto px-4 py-2 flex items-center justify-between">
+      <div className="container mx-auto px-4 py-1 flex items-center justify-between h-auto">
         {/* السلة - يسار */}
         <div className="relative cursor-pointer" onClick={() => setCartOpen(!cartOpen)}>
           <FaShoppingCart size={26} />
