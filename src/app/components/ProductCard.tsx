@@ -1,6 +1,13 @@
 "use client";
 
-import { Card, CardMedia, CardContent, Typography, CardActions, Button } from "@mui/material";
+import {
+  Card,
+  CardMedia,
+  CardContent,
+  Typography,
+  CardActions,
+  Button,
+} from "@mui/material";
 import { Product, useCart } from "../context/CartContext";
 
 interface ProductCardProps {
@@ -13,18 +20,13 @@ export default function ProductCard({ product }: ProductCardProps) {
   return (
     <Card
       sx={{
-        width: 250,
-        height: 370,
+        height: "100%",
         display: "flex",
         flexDirection: "column",
         justifyContent: "flex-start",
-        borderRadius: 3,
+        borderRadius: 0,
         boxShadow: 3,
-        transition: "transform 0.2s, box-shadow 0.2s",
-        "&:hover": {
-          transform: "scale(1.05)",
-          boxShadow: 6,
-        },
+        overflow: "hidden",
       }}
     >
       <CardMedia
@@ -32,38 +34,56 @@ export default function ProductCard({ product }: ProductCardProps) {
         image={product.image}
         alt={product.name}
         sx={{
-          height: 220,
+          height: 200,
           width: "100%",
           objectFit: "cover",
-          borderTopLeftRadius: 12,
-          borderTopRightRadius: 12,
+          transition: "transform 0.3s ease, filter 0.3s ease",
+          "&:hover": {
+            transform: "scale(1.08)",
+            filter: "brightness(1.1)",
+          },
         }}
       />
 
-      <CardContent sx={{ flexGrow: 1, pt: 1 }}>
-        <Typography variant="h6" component="div" fontWeight="bold">
+      <CardContent
+        sx={{
+          flexGrow: 1,
+          pt: 2,
+          textAlign: "center",
+        }}
+      >
+        <Typography
+          variant="h6"
+          component="div"
+          fontWeight="bold"
+          sx={{ mb: 1 }}
+        >
           {product.name}
         </Typography>
-        <Typography variant="body1" color="text.secondary">
+        <Typography
+          variant="body1"
+          sx={{ color: "#F57C00", fontWeight: "bold" }}
+        >
           {product.price} ج.م
         </Typography>
       </CardContent>
 
       <CardActions sx={{ p: 1 }}>
-      <Button
-  variant="contained"
-  fullWidth
-  onClick={() => addToCart(product)}
-  sx={{
-    backgroundColor: "#d2b48c", // بيج غامق
-    color: "#fff",
-    "&:hover": {
-      backgroundColor: "#9c7b4c", // أغمق شوية عند الهوفر
-    },
-  }}
->
-  أضف إلى السلة
-</Button>
+        <Button
+          variant="contained"
+          fullWidth
+          onClick={() => addToCart(product)}
+          sx={{
+            backgroundColor: "#FFB300",
+            color: "#fff",
+            fontWeight: "bold",
+            "&:hover": {
+              backgroundColor: "#F57C00",
+            },
+          }}
+        >
+          أضف إلى السلة
+        </Button>
       </CardActions>
     </Card>
   );

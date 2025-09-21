@@ -43,6 +43,18 @@ export default function ProductTabs() {
       <Typography variant="h3" fontWeight="bold" mb={4} align="center">
         قائمة الطعام
       </Typography>
+      <Typography
+        variant="h6"
+        color="text.secondary"
+        mb={4}
+        align="center"
+        sx={{
+          fontSize: { xs: "1.1rem", md: "1.3rem" },
+          fontWeight: 400,
+        }}
+      >
+        اكتشف تشكيلتنا المتنوعة من المأكولات والمشروبات والحلويات الشهية
+      </Typography>
 
       {/* شريط البحث والتابات */}
       <Box
@@ -55,6 +67,48 @@ export default function ProductTabs() {
           gap: 2,
         }}
       >
+        <Tabs
+          value={tab}
+          onChange={handleChange}
+          sx={{
+            flex: 1,
+            direction: "rtl",
+            "& .MuiTabs-indicator": { display: "none" },
+            "& .MuiTabs-flexContainer": {
+              justifyContent: { xs: "space-between", md: "flex-start" }, // صغير على الموبايل، عادي على الديسكتوب
+              gap: { xs: 0, md: 2 }, // أقل فراغ على الموبايل، فراغ أكبر على الديسكتوب
+            },
+            "& .MuiTab-root": {
+              flex: { xs: "1 1 auto", md: "initial" }, // توسّع تلقائي على الموبايل، حجم طبيعي على الديسكتوب
+              minWidth: { xs: 70, md: 160 }, // أصغر على الموبايل
+              minHeight: { xs: 40, md: 70 }, // أصغر على الموبايل
+              fontSize: { xs: "0.7rem", md: "1.1rem" }, // أصغر على الموبايل
+              textTransform: "none",
+              border: "1px solid #eee",
+              borderRadius: 0,
+              fontWeight: "bold",
+              color: "#555",
+              transition: "0.3s",
+              "&:hover": {
+                backgroundColor: "rgba(255, 179, 0, 0.08)",
+                color: "#FF9800",
+              },
+            },
+            "& .Mui-selected": {
+              backgroundColor: "rgba(255, 179, 0, 0.15)",
+              borderColor: "#FF9800",
+              color: "#FF9800",
+              boxShadow: "0px 2px 6px rgba(0,0,0,0.1)",
+            },
+          }}
+        >
+          <Tab label="الكل" />
+          <Tab label="المأكولات" />
+          <Tab label="المشروبات" />
+          <Tab label="الحلويات" />
+        </Tabs>
+
+        {/* البحث */}
         <TextField
           variant="outlined"
           placeholder="ابحث عن منتج..."
@@ -66,41 +120,19 @@ export default function ProductTabs() {
             "& .MuiOutlinedInput-root": {
               borderRadius: 3,
               boxShadow: "0px 2px 6px rgba(0,0,0,0.1)",
+              "& fieldset": { borderColor: "#ddd" },
+              "&:hover fieldset": { borderColor: "#FF9800" },
+              "&.Mui-focused fieldset": {
+                borderColor: "#FF9800",
+                borderWidth: 2,
+              },
             },
-            "& .MuiOutlinedInput-input": {
-              padding: "10px",
-            },
+            "& .MuiOutlinedInput-input": { padding: "10px" },
           }}
         />
-
-        <Tabs
-          value={tab}
-          onChange={handleChange}
-          sx={{
-            direction: "rtl",
-            "& .MuiTab-root": {
-              textTransform: "none",
-              borderRadius: 2,
-              mx: 0.5,
-              px: 2,
-              py: 1,
-              fontWeight: "bold",
-              transition: "0.3s",
-              "&:hover": { backgroundColor: "#f0f0f0" },
-            },
-            "& .Mui-selected": {
-              backgroundColor: "#ddd",
-            },
-          }}
-        >
-          <Tab label="الكل" />
-          <Tab label="المأكولات" />
-          <Tab label="المشروبات" />
-          <Tab label="الحلويات" />
-        </Tabs>
       </Box>
 
-      {/* عرض المنتجات باستخدام CSS Grid */}
+      {/* عرض المنتجات */}
       <Box
         sx={{
           display: "grid",
