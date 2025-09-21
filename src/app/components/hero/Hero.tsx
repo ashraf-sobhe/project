@@ -43,12 +43,12 @@ export default function HeroSection() {
       {/* المحتوى */}
       <Container sx={{ position: "relative", zIndex: 2, textAlign: "center", color: "white", px: { xs: 2, md: 0 }, pt: { xs: 4, md: 0 } }}>
         {/* العنوان */}
-        <Typography variant="h2" component="h1" sx={{ fontWeight: "bold", mb: { xs: 1, md: 2 }, fontSize: { xs: "4rem", md: "5rem" }, lineHeight: 1.4 }}>
+        <Typography variant="h2" component="h1" sx={{ fontWeight: "bold", mb: { xs: 1, md: 2 }, fontSize: { xs: "2rem", md: "5rem" }, lineHeight: 1.4 }}>
           مطعم <span style={{ color: "#FFB300" }}>سناك هب</span>
         </Typography>
 
         {/* الوصف */}
-        <Typography variant="h6" sx={{ mb: { xs: 3, md: 10 }, maxWidth: "700px", margin: "0 auto", fontSize: { xs: "1.4rem", md: "1.4rem" }, lineHeight: 1.8, fontWeight: 500 }}>
+        <Typography variant="h6" sx={{ mb: { xs: 3, md: 10 }, maxWidth: "700px", margin: "0 auto", fontSize: { xs: "1rem", md: "1.4rem" }, lineHeight: 1.8, fontWeight: 500 }}>
           حيث يلتقي الطعم الأصيل مع الجودة الفاخرة. تجربة طعام فريدة، خدمة سريعة، وأجواء لا تُنسى.
         </Typography>
 
