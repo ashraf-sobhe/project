@@ -6,7 +6,7 @@ const Logo = () => {
   return (
     <div className="flex items-center">
       <Image
-        src="/logo2.png"
+        src="/logo3.png"
         alt="SnackHub Logo"
         width={70}  // صغرت العرض شوية
         height={28}

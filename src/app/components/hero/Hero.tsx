@@ -5,9 +5,18 @@ import { Box, Typography, Button, Container } from "@mui/material";
 import Image from "next/image";
 
 // أيقونات React Icons مع تعطيل SSR
-const FaTruck = dynamic(() => import("react-icons/fa").then((mod) => mod.FaTruck), { ssr: false });
-const FaUtensils = dynamic(() => import("react-icons/fa").then((mod) => mod.FaUtensils), { ssr: false });
-const FaMoneyBillWave = dynamic(() => import("react-icons/fa").then((mod) => mod.FaMoneyBillWave), { ssr: false });
+const FaTruck = dynamic(
+  () => import("react-icons/fa").then((mod) => mod.FaTruck),
+  { ssr: false }
+);
+const FaUtensils = dynamic(
+  () => import("react-icons/fa").then((mod) => mod.FaUtensils),
+  { ssr: false }
+);
+const FaMoneyBillWave = dynamic(
+  () => import("react-icons/fa").then((mod) => mod.FaMoneyBillWave),
+  { ssr: false }
+);
 
 export default function HeroSection() {
   const features = [
@@ -33,23 +42,64 @@ export default function HeroSection() {
         src="/hero.jpg"
         alt="مطعم سناك هب"
         fill
-        style={{ objectFit: "cover" }}
+        style={{
+          objectFit: "cover", // الصورة تملأ المساحة
+          objectPosition: "center", // يركز على منتصف الصورة
+        }}
         priority
       />
 
       {/* Overlay */}
-      <Box sx={{ position: "absolute", inset: 0, backgroundColor: "rgba(0,0,0,0.55)" }} />
+      <Box
+        sx={{
+          position: "absolute",
+          inset: 0,
+          backgroundColor: "rgba(0,0,0,0.55)",
+        }}
+      />
 
       {/* المحتوى */}
-      <Container sx={{ position: "relative", zIndex: 2, textAlign: "center", color: "white", px: { xs: 2, md: 0 }, pt: { xs: 4, md: 0 } }}>
+      <Container
+        sx={{
+          position: "relative",
+          zIndex: 2,
+          textAlign: "center",
+          color: "white",
+          px: { xs: 2, md: 6 }, // padding أفقي: 2 على الموبايل، 6 على الديسكتوب
+          pt: { xs: 4, md: 8 }, // padding top: 4 على الموبايل، 8 على الديسكتوب
+          pb: { xs: 4, md: 12 }, // padding bottom: 4 على الموبايل، 12 على الديسكتوب
+          mt: { xs: 0, md: 4 }, // margin top على الديسكتوب
+          mb: { xs: 0, md: 6 },
+        }}
+      >
         {/* العنوان */}
-        <Typography variant="h2" component="h1" sx={{ fontWeight: "bold", mb: { xs: 1, md: 2 }, fontSize: { xs: "2rem", md: "5rem" }, lineHeight: 1.4 }}>
+        <Typography
+          variant="h2"
+          component="h1"
+          sx={{
+            fontWeight: "bold",
+            mb: { xs: 1, md: 2 },
+            fontSize: { xs: "3rem", md: "4rem" },
+            lineHeight: 1.4,
+          }}
+        >
           مطعم <span style={{ color: "#FFB300" }}>سناك هب</span>
         </Typography>
 
         {/* الوصف */}
-        <Typography variant="h6" sx={{ mb: { xs: 3, md: 10 }, maxWidth: "700px", margin: "0 auto", fontSize: { xs: "1rem", md: "1.4rem" }, lineHeight: 1.8, fontWeight: 500 }}>
-          حيث يلتقي الطعم الأصيل مع الجودة الفاخرة. تجربة طعام فريدة، خدمة سريعة، وأجواء لا تُنسى.
+        <Typography
+          variant="h6"
+          sx={{
+            mb: { xs: 3, md: 10 },
+            maxWidth: "700px",
+            margin: "0 auto",
+            fontSize: { xs: "1.25rem", md: "2rem" },
+            lineHeight: 1.8,
+            fontWeight: 500,
+          }}
+        >
+          حيث يلتقي الطعم الأصيل مع الجودة الفاخرة. تجربة طعام فريدة، خدمة
+          سريعة، وأجواء لا تُنسى.
         </Typography>
 
         {/* المميزات */}
@@ -78,7 +128,11 @@ export default function HeroSection() {
                 }}
               >
                 <IconComponent size={60} color="white" />
-                <Typography variant="subtitle1" fontWeight="bold" sx={{ mt: 1 }}>
+                <Typography
+                  variant="subtitle1"
+                  fontWeight="bold"
+                  sx={{ mt: 1 }}
+                >
                   {item.text}
                 </Typography>
               </Box>
@@ -88,6 +142,8 @@ export default function HeroSection() {
 
         {/* زر الطلب */}
         <Button
+          component="a"
+          href="#products"
           variant="contained"
           sx={{
             backgroundColor: "#FFB300",

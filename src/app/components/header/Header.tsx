@@ -45,7 +45,12 @@ export default function Header() {
             className="relative cursor-pointer"
             onClick={() => setCartOpen(!cartOpen)}
           >
-            <FaShoppingCart size={24} className="opacity-70 text-gray-800" />
+            <FaShoppingCart
+              size={24}
+              style={{
+                color: "rgba(0,0,0,0.5)", // أسود نصف شفاف، يظهر على خلفية بيضاء
+              }}
+            />
             {cart.length > 0 && (
               <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold px-2 py-0.5 rounded-full">
                 {cart.reduce((acc, p) => acc + (p.quantity || 1), 0)}
