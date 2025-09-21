@@ -8,8 +8,9 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  /* هنا بنخلي Cairo هو الخط الأساسي */
+  --font-sans: var(--font-cairo);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,5 +23,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+
+  /* ندي Cairo كخط أساسي + fallback */
+  font-family: var(--font-cairo), "Cairo", Arial, Helvetica, sans-serif;
 }
