@@ -12,7 +12,7 @@ export default function CheckoutPage() {
 
   const router = useRouter();
 
-  const total = cart.reduce((sum, p) => sum + (p.price * (p.quantity || 1)), 0);
+  const total = cart.reduce((sum, p) => sum + p.price * (p.quantity || 1), 0);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -38,17 +38,17 @@ export default function CheckoutPage() {
           cart.map((product) => (
             <div
               key={product.id}
-              className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 border rounded-lg hover:shadow-md transition-shadow duration-200"
+              className="flex flex-col sm:flex-row items-center sm:items-start justify-center sm:justify-between gap-4 p-4 border rounded-lg hover:shadow-md transition-shadow duration-200"
             >
               {product.image && (
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="w-24 h-24 object-cover rounded flex-shrink-0"
+                  className="w-24 h-24 object-cover rounded mb-2 sm:mb-0"
                 />
               )}
 
-              <div className="flex-1 min-w-0">
+              <div className="flex-1 min-w-0 text-center sm:text-left">
                 <p className="font-bold text-lg truncate">{product.name}</p>
                 <p className="text-gray-500">{product.price} ج.م</p>
                 <p className="text-gray-700 font-semibold mt-1">
