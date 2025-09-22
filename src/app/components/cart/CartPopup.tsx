@@ -9,14 +9,15 @@ interface CartPopupProps {
 
 export default function CartPopup({ onClose }: CartPopupProps) {
   const router = useRouter();
-  const { cart, incrementQuantity, decrementQuantity, removeFromCart } = useCart();
+  const { cart, incrementQuantity, decrementQuantity, removeFromCart } =
+    useCart();
 
-  const total = cart.reduce((sum, p) => sum + (p.price * (p.quantity || 1)), 0);
+  const total = cart.reduce((sum, p) => sum + p.price * (p.quantity || 1), 0);
 
   const handleCheckout = () => {
     if (cart.length === 0) return; // السلة فارغة → لا يحدث شيء
-    onClose();                     // اغلاق popup السلة
-    router.push("/checkout");      // الذهاب لصفحة checkout
+    onClose(); // اغلاق popup السلة
+    router.push("/checkout"); // الذهاب لصفحة checkout
   };
 
   return (
@@ -41,26 +42,25 @@ export default function CartPopup({ onClose }: CartPopupProps) {
         cart.map((product) => (
           <div
             key={product.id}
-            className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 p-2 border rounded-lg flex-wrap hover:shadow-md transition-shadow duration-200"
+            className="flex flex-col sm:flex-row items-center sm:items-start justify-center sm:justify-between gap-3 mb-4 p-2 border rounded-lg flex-wrap hover:shadow-md transition-shadow duration-200"
           >
             {product.image && (
               <img
                 src={product.image}
                 alt={product.name}
-                className="w-20 h-20 object-cover rounded flex-shrink-0"
+                className="w-20 h-20 object-cover rounded mb-2 sm:mb-0"
               />
             )}
 
-            <div className="flex-1 min-w-0">
+            <div className="flex-1 min-w-0 text-center sm:text-left">
               <p className="font-bold text-md truncate">{product.name}</p>
               <p className="text-gray-500">{product.price} ج.م</p>
               <p className="text-gray-700 font-semibold mt-1">
                 {(product.price * (product.quantity || 1)).toFixed(2)} ج.م
               </p>
-              <p className="text-gray-600">الكمية: {product.quantity}</p>
             </div>
 
-            <div className="flex items-center border rounded overflow-hidden flex-shrink-0">
+            <div className="flex items-center border rounded overflow-hidden justify-center mb-2 sm:mb-0">
               <button
                 onClick={() => decrementQuantity(product.id)}
                 className="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-lg font-bold"
@@ -78,7 +78,7 @@ export default function CartPopup({ onClose }: CartPopupProps) {
 
             <button
               onClick={() => removeFromCart(product.id)}
-              className="mt-2 sm:mt-0 sm:ml-2 px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 flex-shrink-0"
+              className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600"
             >
               حذف
             </button>
