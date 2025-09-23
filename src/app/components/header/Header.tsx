@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { FaShoppingCart, FaBars, FaTimes } from "react-icons/fa";
+import { BsCart2 } from "react-icons/bs";
+import { FaBars, FaTimes } from "react-icons/fa";
 import Logo from "./Logo";
 import CartPopup from "../cart/CartPopup";
 import Link from "next/link";
@@ -45,11 +46,9 @@ export default function Header() {
             className="relative cursor-pointer"
             onClick={() => setCartOpen(!cartOpen)}
           >
-            <FaShoppingCart
+            <BsCart2
               size={24}
-              style={{
-                color: "rgba(0,0,0,0.5)", // أسود نصف شفاف، يظهر على خلفية بيضاء
-              }}
+             style={{ color: "#000" }}
             />
             {cart.length > 0 && (
               <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold px-2 py-0.5 rounded-full">

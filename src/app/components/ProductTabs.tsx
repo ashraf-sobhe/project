@@ -84,22 +84,26 @@ export default function ProductTabs() {
               minHeight: { xs: 40, md: 65 },
               fontSize: { xs: "0.75rem", md: "1rem" },
               textTransform: "none",
-              border: "1px solid #000",
+              border: "1px solid #ddd",
               borderRadius: 0,
               fontWeight: "600",
-              color: "#000", // النص أسود
-              backgroundColor: "#fff", // الخلفية بيضاء
+              color: "#333", // النص عادي
+              backgroundColor: "#f5f5f5",
               transition: "all 0.3s ease",
               "&:hover": {
-                backgroundColor: "#000", // أسود
-                color: "#fff", // النص أبيض
+                backgroundColor: "#444",
+                color: "#fff",
+                borderColor: "#444",
+              },
+              "&:focus": {
+                outline: "none", // يشيل الأزرق بتاع الفوكس
               },
             },
             "& .Mui-selected": {
-              backgroundColor: "#000", // أسود
-              borderColor: "#000",
-              color: "#fff", // النص أبيض
-              boxShadow: "0px 3px 8px rgba(0,0,0,0.2)",
+              backgroundColor: "#444",
+              borderColor: "#444",
+              color: "#fff !important", // نجبر النص يبقى أبيض
+              boxShadow: "0px 3px 8px rgba(0,0,0,0.15)",
               fontWeight: "700",
             },
           }}
