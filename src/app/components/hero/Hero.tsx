@@ -35,26 +35,28 @@ export default function HeroSection() {
         alignItems: "center",
         justifyContent: "center",
         backgroundColor: "#000",
+        overflow: "hidden",
       }}
     >
       {/* الخلفية */}
       <Image
-        src="/hero.jpg"
+        src="/about.jpg"
         alt="مطعم سناك هب"
         fill
         style={{
-          objectFit: "cover", // الصورة تملأ المساحة
-          objectPosition: "center", // يركز على منتصف الصورة
+          objectFit: "cover",
+          objectPosition: "center",
         }}
         priority
       />
 
-      {/* Overlay */}
+      {/* Overlay بتدرج لوني */}
       <Box
         sx={{
           position: "absolute",
           inset: 0,
-          backgroundColor: "rgba(0,0,0,0.55)",
+          background:
+            "linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.7))",
         }}
       />
 
@@ -65,10 +67,10 @@ export default function HeroSection() {
           zIndex: 2,
           textAlign: "center",
           color: "white",
-          px: { xs: 2, md: 6 }, // padding أفقي: 2 على الموبايل، 6 على الديسكتوب
-          pt: { xs: 4, md: 8 }, // padding top: 4 على الموبايل، 8 على الديسكتوب
-          pb: { xs: 4, md: 12 }, // padding bottom: 4 على الموبايل، 12 على الديسكتوب
-          mt: { xs: 0, md: 4 }, // margin top على الديسكتوب
+          px: { xs: 2, md: 6 },
+          pt: { xs: 4, md: 8 },
+          pb: { xs: 4, md: 12 },
+          mt: { xs: 0, md: 4 },
           mb: { xs: 0, md: 6 },
         }}
       >
@@ -79,8 +81,9 @@ export default function HeroSection() {
           sx={{
             fontWeight: "bold",
             mb: { xs: 1, md: 2 },
-            fontSize: { xs: "3rem", md: "4rem" },
+            fontSize: { xs: "2.5rem", md: "4rem" },
             lineHeight: 1.4,
+            textShadow: "2px 2px 10px rgba(0,0,0,0.6)", // يوضح النص فوق الخلفية
           }}
         >
           مطعم <span style={{ color: "#FFB300" }}>سناك هب</span>
@@ -93,9 +96,10 @@ export default function HeroSection() {
             mb: { xs: 3, md: 10 },
             maxWidth: "700px",
             margin: "0 auto",
-            fontSize: { xs: "1.25rem", md: "2rem" },
+            fontSize: { xs: "1.1rem", md: "1.6rem" },
             lineHeight: 1.8,
             fontWeight: 500,
+            textShadow: "1px 1px 6px rgba(0,0,0,0.6)",
           }}
         >
           حيث يلتقي الطعم الأصيل مع الجودة الفاخرة. تجربة طعام فريدة، خدمة
@@ -106,7 +110,7 @@ export default function HeroSection() {
         <Box
           sx={{
             display: "flex",
-            flexDirection: { xs: "column", md: "row" }, // عمودي على الموبايل، أفقي على الديسكتوب
+            flexDirection: { xs: "column", md: "row" },
             justifyContent: "center",
             alignItems: "center",
             gap: { xs: 4, md: 6 },
@@ -124,14 +128,17 @@ export default function HeroSection() {
                   flexDirection: "column",
                   alignItems: "center",
                   justifyContent: "center",
-                  flex: "0 0 auto", // يمنع أي تمدد غير مرغوب فيه
+                  flex: "0 0 auto",
                 }}
               >
                 <IconComponent size={60} color="white" />
                 <Typography
                   variant="subtitle1"
                   fontWeight="bold"
-                  sx={{ mt: 1 }}
+                  sx={{
+                    mt: 1,
+                    textShadow: "1px 1px 4px rgba(0,0,0,0.5)",
+                  }}
                 >
                   {item.text}
                 </Typography>

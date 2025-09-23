@@ -75,30 +75,32 @@ export default function ProductTabs() {
             direction: "rtl",
             "& .MuiTabs-indicator": { display: "none" },
             "& .MuiTabs-flexContainer": {
-              justifyContent: { xs: "space-between", md: "flex-start" }, // صغير على الموبايل، عادي على الديسكتوب
-              gap: { xs: 0, md: 2 }, // أقل فراغ على الموبايل، فراغ أكبر على الديسكتوب
+              justifyContent: { xs: "space-between", md: "flex-start" },
+              gap: { xs: 0, md: 2 },
             },
             "& .MuiTab-root": {
-              flex: { xs: "1 1 auto", md: "initial" }, // توسّع تلقائي على الموبايل، حجم طبيعي على الديسكتوب
-              minWidth: { xs: 70, md: 160 }, // أصغر على الموبايل
-              minHeight: { xs: 40, md: 70 }, // أصغر على الموبايل
-              fontSize: { xs: "0.7rem", md: "1.1rem" }, // أصغر على الموبايل
+              flex: { xs: "1 1 auto", md: "initial" },
+              minWidth: { xs: 70, md: 140 },
+              minHeight: { xs: 40, md: 65 },
+              fontSize: { xs: "0.75rem", md: "1rem" },
               textTransform: "none",
-              border: "1px solid #eee",
+              border: "1px solid #000",
               borderRadius: 0,
-              fontWeight: "bold",
-              color: "#555",
-              transition: "0.3s",
+              fontWeight: "600",
+              color: "#000", // النص أسود
+              backgroundColor: "#fff", // الخلفية بيضاء
+              transition: "all 0.3s ease",
               "&:hover": {
-                backgroundColor: "rgba(255, 179, 0, 0.08)",
-                color: "#FF9800",
+                backgroundColor: "#000", // أسود
+                color: "#fff", // النص أبيض
               },
             },
             "& .Mui-selected": {
-              backgroundColor: "rgba(255, 179, 0, 0.15)",
-              borderColor: "#FF9800",
-              color: "#FF9800",
-              boxShadow: "0px 2px 6px rgba(0,0,0,0.1)",
+              backgroundColor: "#000", // أسود
+              borderColor: "#000",
+              color: "#fff", // النص أبيض
+              boxShadow: "0px 3px 8px rgba(0,0,0,0.2)",
+              fontWeight: "700",
             },
           }}
         >
@@ -121,9 +123,9 @@ export default function ProductTabs() {
               borderRadius: 3,
               boxShadow: "0px 2px 6px rgba(0,0,0,0.1)",
               "& fieldset": { borderColor: "#ddd" },
-              "&:hover fieldset": { borderColor: "#FF9800" },
+              "&:hover fieldset": { borderColor: "#666" }, // رمادي غامق للهوفر
               "&.Mui-focused fieldset": {
-                borderColor: "#FF9800",
+                borderColor: "#000", // أسود عند الفوكس
                 borderWidth: 2,
               },
             },
